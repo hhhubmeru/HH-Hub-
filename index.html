@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#173f35">
+<title>HH HUB | Pelbagai Servis, Satu Tempat</title>
+<style>
+:root {
+  --site-primary: #173f35;
+  --site-on-primary: #ffffff;
+  --site-secondary: #e8c878;
+  --site-on-secondary: #202b25;
+  --site-background: #f7f5ef;
+  --site-on-background: #202b25;
+  --site-font-body: Arial, Helvetica, sans-serif;
+  --site-font-heading: Arial, Helvetica, sans-serif;
+  --site-heading-scale: 1;
+  --site-spacing-scale: 1;
+  --site-radius-scale: 1;
+  --site-decoration-opacity: 1;
+  --ink: #202b25;
+  --muted: #65716b;
+  --surface: light-dark(#ffffff, #202923);
+  --line: light-dark(#e2e6df, #414a43);
+  --soft: light-dark(#edf2ec, #2b382f);
+  --gold: #e8c878;
+}
+* { box-sizing: border-box; }
+html { color-scheme: light dark; scroll-behavior: smooth; }
+body { margin: 0; font-family: var(--site-font-body); color: var(--site-on-background); background: var(--site-background); }
+button, a { font: inherit; }
+a { color: inherit; }
+#app { min-height: 100vh; width: 100%; border-radius: 0; background-color: var(--site-background); color: var(--site-on-background); overflow: hidden; }
+.wrap { width: min(1100px, 100% - 36px); margin: 0 auto; }
+header { background: var(--site-primary); color: var(--site-on-primary); }
+.nav { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:18px 0; }
+.brand { display:flex; align-items:center; gap:10px; text-decoration:none; }
+.logo { width:44px; height:44px; border:2px solid var(--site-secondary); border-radius:14px; display:grid; place-items:center; color:var(--site-secondary); font-weight:900; line-height:.85; letter-spacing:-2px; font-size:17px; }
+.logo small { display:block; font-size:9px; letter-spacing:2px; text-align:center; margin-top:4px; }
+.brand-name { font-size:21px; font-weight:850; letter-spacing:1.5px; }
+.brand-tag { display:block; font-size:10px; opacity:.8; letter-spacing:.6px; margin-top:3px; }
+.nav-cta { background:var(--site-secondary); color:var(--site-on-secondary); text-decoration:none; border-radius:999px; padding:11px 15px; font-size:13px; font-weight:800; white-space:nowrap; }
+.hero { padding:52px 0 48px; background:linear-gradient(135deg, var(--site-primary), #245748); position:relative; }
+.hero-grid { display:grid; grid-template-columns:1.25fr .75fr; align-items:center; gap:28px; }
+.eyebrow { color:var(--site-secondary); text-transform:uppercase; letter-spacing:2px; font-size:11px; font-weight:800; }
+h1 { font-family:var(--site-font-heading); font-size:calc(43px * var(--site-heading-scale)); line-height:1.06; letter-spacing:-1.7px; margin:14px 0 17px; max-width:680px; }
+.hero p { color:#e2eae4; line-height:1.7; max-width:570px; margin:0 0 24px; }
+.actions { display:flex; gap:11px; flex-wrap:wrap; }
+.btn { display:inline-flex; align-items:center; justify-content:center; padding:13px 18px; border-radius:12px; text-decoration:none; font-size:14px; font-weight:800; border:1px solid transparent; }
+.btn-gold { background:var(--site-secondary); color:var(--site-on-secondary); }
+.btn-outline { border-color:#719084; color:#fff; }
+.hero-note { border:1px solid #527466; background:#ffffff0d; border-radius:22px; padding:24px; }
+.hero-note .big { font-size:52px; margin-bottom:9px; }
+.hero-note h2 { font-size:19px; margin:0 0 8px; }
+.hero-note p { font-size:13px; margin:0; }
+main section { padding:48px 0; }
+.section-head { margin-bottom:24px; max-width:690px; }
+.kicker { color:#66816e; text-transform:uppercase; font-weight:850; letter-spacing:1.8px; font-size:11px; }
+h2 { font-size:calc(30px * var(--site-heading-scale)); line-height:1.15; letter-spacing:-.8px; margin:9px 0 10px; }
+.section-head p { color:var(--muted); line-height:1.65; margin:0; }
+.services { display:grid; grid-template-columns:repeat(3,1fr); gap:15px; }
+.card { background:var(--surface); border:1px solid var(--line); border-radius:calc(18px * var(--site-radius-scale)); padding:22px; }
+.card.active { border-color:#bda25b; box-shadow:0 8px 24px #173f3510; }
+.card-icon { width:46px; height:46px; display:grid; place-items:center; border-radius:14px; background:var(--soft); font-size:23px; margin-bottom:17px; }
+.pill { display:inline-block; border-radius:999px; padding:6px 9px; background:#e3eee4; color:#23523d; font-size:10px; text-transform:uppercase; letter-spacing:.8px; font-weight:900; }
+.pill.soon { background:light-dark(#f0eee8,#3d3a30); color:light-dark(#786a48,#e8d6a6); }
+.card h3 { margin:13px 0 8px; font-size:19px; }
+.card p { margin:0; color:var(--muted); line-height:1.65; font-size:14px; }
+.card .card-link { display:inline-block; margin-top:17px; color:var(--site-primary); font-weight:800; font-size:13px; text-decoration:none; }
+.notice { display:flex; gap:14px; align-items:flex-start; background:var(--soft); padding:18px; border-radius:16px; margin-top:20px; }
+.notice strong { display:block; margin-bottom:4px; }
+.notice p { margin:0; font-size:13px; line-height:1.6; color:var(--muted); }
+.steps { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.step { padding:20px 0; border-top:2px solid var(--site-secondary); }
+.step b { font-size:14px; display:block; margin-bottom:7px; }
+.step p { color:var(--muted); font-size:13px; line-height:1.65; margin:0; }
+.contact { background:var(--site-primary); color:#fff; padding:42px 0; }
+.contact-grid { display:grid; grid-template-columns:1fr auto; align-items:center; gap:20px; }
+.contact h2 { margin-top:0; }
+.contact p { color:#d7e4dc; line-height:1.6; }
+.contact .btn-outline { border-color:#668a79; }
+.contact-small { font-size:12px; opacity:.8; margin-top:13px; }
+footer { background:var(--site-primary); color:#c8d7ce; border-top:1px solid #45695a; padding:19px 0; font-size:11px; }
+footer .wrap { display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+@media(max-width:720px) {
+ .wrap { width:min(100% - 30px, 560px); }
+ .nav { padding:14px 0; }
+ .brand-name { font-size:18px; }
+ .brand-tag { max-width:160px; line-height:1.3; }
+ .nav-cta { padding:10px 12px; font-size:12px; }
+ .hero { padding:39px 0 34px; }
+ .hero-grid { grid-template-columns:1fr; gap:23px; }
+ h1 { font-size:calc(39px * var(--site-heading-scale)); }
+ .hero-note { padding:18px; display:flex; gap:15px; align-items:center; }
+ .hero-note .big { font-size:36px; margin:0; }
+ .hero-note h2 { font-size:16px; }
+ .hero-note p { font-size:12px; }
+ main section { padding:37px 0; }
+ h2 { font-size:calc(27px * var(--site-heading-scale)); }
+ .services { grid-template-columns:1fr; gap:12px; }
+ .card { padding:19px; }
+ .card-icon { margin-bottom:12px; }
+ .steps { grid-template-columns:1fr; gap:4px; }
+ .step { padding:15px 0; }
+ .contact-grid { grid-template-columns:1fr; }
+ .contact-grid .actions { align-items:stretch; }
+ .contact-grid .btn { width:100%; }
+}
+</style>
+</head>
+<body>
+<div id="app">
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#home" aria-label="HH HUB halaman utama">
+      <span class="logo">HH<small>HUB</small></span>
+      <span><span class="brand-name">HH HUB</span><span class="brand-tag">PELBAGAI SERVIS, SATU TEMPAT.</span></span>
+    </a>
+    <a class="nav-cta" href="#handyman">Servis Handyman ↗</a>
+  </div>
+</header>
+<div class="hero" id="home">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Mudah • Mesra • Setempat</div>
+      <h1>Satu tempat.<br>Pelbagai urusan.</h1>
+      <p>Selamat datang ke HH HUB — hub servis setempat untuk membantu urusan rumah dan keperluan harian anda. Buat masa ini, pertanyaan servis handyman sudah dibuka.</p>
+      <div class="actions">
+        <a class="btn btn-gold" href="#handyman">Lihat servis handyman</a>
+        <a class="btn btn-outline" href="#servis">Teroka HH HUB</a>
+      </div>
+    </div>
+    <div class="hero-note">
+      <div class="big">⌂</div>
+      <div><h2>Urusan lebih mudah</h2><p>Hubungi kami untuk bertanya tentang kerja kecil rumah. Servis lain akan diumumkan apabila sudah tersedia.</p></div>
+    </div>
+  </div>
+</div>
+<main>
+<section id="handyman">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Dibuka untuk pertanyaan</div>
+      <h2>Servis handyman</h2>
+      <p>Perlukan bantuan untuk kerja pemasangan atau pembaikan kecil di rumah? Hantar pertanyaan kepada kami untuk semakan skop kerja dan sebut harga.</p>
+    </div>
+    <div class="services">
+      <article class="card active">
+        <div class="card-icon">💡</div><span class="pill">Tanya sekarang</span>
+        <h3>Pemasangan lampu</h3><p>Pertanyaan untuk pemasangan atau penggantian lampu. Kerja elektrik tertakluk pada skop dan kelayakan yang bersesuaian.</p>
+      </article>
+      <article class="card active">
+        <div class="card-icon">🌀</div><span class="pill">Tanya sekarang</span>
+        <h3>Pemasangan kipas</h3><p>Hubungi kami untuk semak jenis kipas, lokasi pemasangan dan keadaan tapak.</p>
+      </article>
+      <article class="card active">
+        <div class="card-icon">🛠️</div><span class="pill">Tanya sekarang</span>
+        <h3>Kerja kecil rumah</h3><p>Ceritakan kerja yang diperlukan. Kami akan semak sama ada skop kerja tersebut boleh diambil.</p>
+      </article>
+    </div>
+    <div class="notice"><span>ℹ️</span><div><strong>Bagaimana nak mula?</strong><p>Tekan butang WhatsApp di bawah, beritahu jenis kerja, kawasan, dan sertakan gambar jika ada. Harga serta tarikh kerja akan disahkan selepas semakan.</p></div></div>
+  </div>
+</section>
+<section id="servis" style="background:var(--soft)">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Akan datang secara berperingkat</div>
+      <h2>Lebih banyak servis menyusul</h2>
+      <p>HH HUB dibina untuk berkembang sedikit demi sedikit. Kami akan kemas kini halaman ini apabila setiap servis benar-benar bersedia menerima pelanggan.</p>
+    </div>
+    <div class="services">
+      <article class="card"><div class="card-icon">📦</div><span class="pill soon">Akan datang</span><h3>Parcel collection</h3><p>Maklumat collection point dan status platform akan diumumkan selepas kelulusan serta pengaktifan rasmi.</p></article>
+      <article class="card"><div class="card-icon">🖨️</div><span class="pill soon">Akan datang</span><h3>Printing & dokumen</h3><p>Perancangan untuk cetakan dan urusan dokumen. Maklumat tempahan melalui WhatsApp atau walk-in akan dikemas kini kemudian.</p></article>
+      <article class="card"><div class="card-icon">🏠</div><span class="pill soon">Akan datang</span><h3>Servis HH HUB lain</h3><p>Maklumat servis tambahan akan dimasukkan apabila persediaan operasi sudah selesai.</p></article>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    <div class="section-head"><div class="kicker">Cara membuat pertanyaan</div><h2>Ringkas sahaja</h2></div>
+    <div class="steps">
+      <div class="step"><b>01 / Hubungi kami</b><p>Tekan butang WhatsApp untuk mula bertanya tentang servis handyman.</p></div>
+      <div class="step"><b>02 / Kongsi maklumat</b><p>Nyatakan jenis kerja, lokasi dan gambar berkaitan supaya skop lebih jelas.</p></div>
+      <div class="step"><b>03 / Sahkan sebut harga</b><p>Tunggu pengesahan harga, ketersediaan dan tarikh sebelum kerja dimulakan.</p></div>
+    </div>
+  </div>
+</section>
+<section class="contact" id="hubungi">
+  <div class="wrap contact-grid">
+    <div><div class="eyebrow">HH HUB • Hubungi kami</div><h2>Ada kerja nak dibuat?</h2><p>Mulakan dengan pertanyaan handyman. Kami akan balas untuk semak butiran kerja anda.</p><div class="contact-small">Servis lain belum dibuka untuk tempahan sehingga pengumuman rasmi.</div></div>
+    <div class="actions"><a class="btn btn-gold" href="https://wa.me/60182953725?text=Assalamualaikum%20HH%20HUB%2C%20saya%20nak%20bertanya%20tentang%20servis%20handyman." target="_blank" rel="noopener">WhatsApp Ayu</a><a class="btn btn-outline" href="tel:+60182953725">Telefon 018-295 3725</a></div>
+  </div>
+</section>
+</main>
+<footer><div class="wrap"><span>© HH HUB · Pelbagai servis, satu tempat.</span><span>Servis tertakluk pada pengesahan dan ketersediaan.</span></div></footer>
+</div>
+</body>
+</html>
